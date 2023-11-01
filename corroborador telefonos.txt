@@ -1,0 +1,68 @@
+function telephoneCheck(str) {
+  let original = [...str].filter(item => !item.match(/[ -]/)).reverse().join("");  
+  let hyphens = [...str].filter(item => !item.match(/[ ()]/)).reverse().join("")
+
+  if(str.search(/[^0-9() -]/) != -1){
+    return false;
+  }
+
+  let newStr = str.split(/[^0-9]/).join("");  
+  let length = newStr.length;
+
+  console.log(newStr);
+  console.log(hyphens);
+
+  if((length >11 || length < 10) ){
+    return false;
+  }
+
+  if(length == 11 && newStr[0] != 1 ){
+    
+    return false;
+  }
+
+  if(original.indexOf("(") != -1 || original.indexOf(")") != -1){
+    if(length == 10 && (original.indexOf("(") != 11 || original.indexOf(")") != 7)){
+      return false;
+    }else if(length == 11 && (original.indexOf("(") != 11 || original.indexOf(")") != 7)){
+      return false;
+    }
+  }
+
+  let arr = [...hyphens].reverse();
+  console.log(arr); 
+
+
+      let count = arr.reduce((sum, item) => {
+              if(item === "-"){
+                sum++;
+              }
+              return sum;
+          }, 0);
+          
+      if(count > 2 ){
+        return false;
+      }
+        
+    
+    if(count == 2){
+      if( length == 10 && (arr.indexOf("-") != 3 || hyphens.indexOf("-") != 4)){
+        return false;
+      }else if( length == 11 && (arr.indexOf("-") != 4  || hyphens.indexOf("-") != 4)){
+        return false; 
+      }
+    } 
+  if(count == 1){
+      if( length == 10 && (hyphens.indexOf("-") != 8 && hyphens.indexOf("-") != 4)){
+        return false;
+      }else if(count ==1 && length == 11 && (hyphens.indexOf("-") != 8  && hyphens.indexOf("-") != 4)){
+        return false; 
+      }   
+  }
+
+
+
+
+  return true; 
+} 
+console.log(telephoneCheck("-1 (757) 622-7382")); 

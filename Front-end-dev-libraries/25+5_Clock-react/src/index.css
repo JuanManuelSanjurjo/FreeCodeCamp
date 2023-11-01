@@ -1,0 +1,101 @@
+*{
+  box-sizing: border-box;
+}
+:root, body{
+  height: 100%;
+  margin: 0;
+  --shadow : 1px 1px 3px black;
+}
+
+#root{
+  height: 100%;
+  font-family: monospace;
+}
+h1{
+  font-size: 50px;
+  color: antiquewhite;
+  margin-bottom: 0;
+  text-shadow: var(--shadow);
+}
+h2, p{
+  font-size: 30px;
+  color: antiquewhite;
+  text-shadow: var(--shadow);
+}
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color:rgb(17, 17, 75);
+  justify-content: center;
+  align-items: center;
+}
+
+.clockContainer{
+  width: 80%;
+  height: 60%;
+  margin: 50px auto;
+  background-color:darkslategray;
+  box-shadow: 0px 0px 15px black;
+  border-radius: 15px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  overflow: hidden
+;}
+
+.lengthControlContainer{
+  background-color: rgba(240, 248, 255, 0.466);
+}
+
+.clockDisplayContainer{
+  background-color: rgba(255, 0, 0, 0.466);
+}
+.controlsContainer{
+  background-color: rgba(0, 0, 255, 0.473);
+}
+
+
+.lengthControlContainer, .clockDisplayContainer, .controlsContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.lengthControlContainer > div {
+  text-align: center;
+}
+.lengthControlContainer > div > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+.clockDisplayContainer{
+  flex-direction: column;
+}
+.clockDisplayContainer h2{
+  margin-top: 35px
+}
+.controlsContainer{
+  justify-content: center;
+  gap: 25px;
+}
+#time-left{
+  margin-bottom: 50px;
+}
+
+button{
+  min-width: 80px;
+  padding: 10px;
+  color: bisque;
+  background-color:rgb(46, 16, 94);
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+button:hover{
+  background-color:rgb(68, 52, 95);
+  border: 1px solid bisque;
+}
+

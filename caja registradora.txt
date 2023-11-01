@@ -1,0 +1,65 @@
+function checkCashRegister(price, cash, cid) {
+  let rta = {status: "", change: []};
+  let change = cash - price;
+  change = Number.parseFloat(change).toFixed(2);
+  let objRef ={
+  "PENNY": 0.01,
+  "NICKEL": 0.05,
+  "DIME": 0.1,
+  "QUARTER": 0.25,
+  "ONE": 1,
+  "FIVE": 5,
+  "TEN": 10,
+  "TWENTY": 20,
+  "ONE HUNDRED": 100
+  };
+  let objAux = {
+  "ONE HUNDRED": 0,
+  "TWENTY": 0,
+  "TEN": 0,
+  "FIVE": 0,
+  "ONE": 0,
+  "QUARTER": 0,
+  "DIME": 0,
+  "NICKEL": 0,
+  "PENNY": 0
+  };
+
+  cid.reverse();
+  cid.forEach(item => objAux[item[0]] = item[1]);
+
+  if(change > 0 ){
+    
+    cid.forEach(item => {
+        let key = item[0];
+        let value =  item[1];
+        let sum = 0;
+
+        while(objRef[key] <= change && objAux[key] >= objRef[key] ){
+            objAux[key] -= objRef[key];
+            objAux[key] = objAux[key].toFixed(2);
+            change-= objRef[key];
+            sum += objRef[key];
+            change = change.toFixed(2);
+        } 
+          if(sum > 0){
+            rta.change.push([key, sum]);
+          }
+        });
+
+      rta.status = "OPEN";
+
+      if(change > 0 ){ 
+         rta.status =  "INSUFFICIENT_FUNDS";
+         rta.change = [];
+      }else if(change == 0 && Object.entries(objAux).every(item => item[1] == 0)){
+          rta.status =  "CLOSED";
+          rta.change = cid.reverse();
+      }
+ 
+  }
+ 
+  return rta; 
+}
+
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]) 

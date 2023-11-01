@@ -1,0 +1,307 @@
+# JavaScript:
+
+| Codigo | Detalle|
+|:----|:-----|
+|.push                                                           |pone un elemento al final del array|
+|.pop                                                            |quita último elemento del array|
+  |.shift           |quita un elemento al inicio del array
+|.unshift 	                                                     |pone un elemento al comienzo del array|
+|arr.splice(index,cant,'aAgregar',’aAgregar2’,.edetc)            | remueve del arr desde index por una cant por parámetro y opcionalmente se puede agregar ene se espacio los parámetros siguientes. Modifica el original y retorna uno nuevo con los elementos quitados
+arr.slice(index1,index2)|No modifica el original, devuelve arr con lo extraido. **Extrae de index1(inclusive) a index2(excluye)**
+string.split(“ “), string.split(““)	                             |etorna un arreglo con elementos separados por “string” que se pasa por parametro.(el 2 ej devuelve todos los caracteres incluidos los espacios)
+let arr3 = arr.concat(arr2) <br>	ej : let arr = [0,1,2].concat([3,4])	|concatena arrays sin mutarlos. Genera un nuevo array
+let newArr = arr.toSpliced(0,2)                                 | Splice que no muta el arrr original. En una sola llamada recorre y entrega un nuevo arreglo
+let newArr = arr.with(2,"reemplazo")                            |reemplaza la posicion 2 con el segundo parametro sin mutar el original
+let newArr = arr.toSorted()                                     |ordena el arreglo sin mutar el original y entregando un nuevo arreglo
+let newArr = arr.toReversed()                                   |da vuelta el arreglo sin mutar el original y entregando un nuevo arreglo
+Array.from(“asd”)	<br>Array.from([1, 2, 3], x => x + x) |	convienrte string en array [a,s,d]. <br> resulta  // [2, 4, 6]
+const obj = Object.fromEntries(entries);	                      |		console.log(obj); // Expected output: Object { foo: "bar", baz: 42 }
+let thatArray = [...thisArray];		                              | pasa los “elementos” de un array a otro (no el “array”)
+myArray.splice(1,0,...array2);		                              |a partir del index 1, quita 0 elementos y agrega todos los elementos de array2
+arr.indexOf(element)		                                        |devuelve el indice donde se enncuetra el “element”. Si no esta en el arreglo devuelve -1.
+parseInt(“string”) / parseFloat(“string”)	                      |	convierte string en Int / float
+typeof variable1 === "number"                                     | devuelve True or false
+    
+
+<br><br>
+## Array-likes   
+#### son objetos de JS que comparte alguna caracteristica con arr
+
+|  | |
+|:----|:-----|
+const arrlike = {length: 50}	                                      |	Tienen que tener una propiedad length
+const arr_like = {0: 'I', 1: 'am', 2: 'array-like', length: 3};	    | No son arrays, no tienen sus metoedos, pero son indexados. 	y puede saberse su length con “.length”.  arr_like[2]  devuelve 'array-like'
+arguments es un array-like                                          |   
+function checkArgs() {}	                                            | loguea los argumentos que se pasaron a la funcion
+console.log(arguments);		                                          | ej: checkArgs(2,4) logea // [2,4]
+convertir array-like en array	                                      | let arr = Array.from(array-like)
+<br>
+## Acceder a claves de un objeto:
+|  | |
+|:----|:-----|
+Objeto.nombreClave				                                         |	devuelve valor correspondiente a la clave, del objeto
+Objeto.[“nombre clave”]			                                       |	devuelve valor correspondiente si la clave tiene espacio
+Objeto[variable]				                                           |	devuelve valor usando una variable para acceder a la clave
+Objeto.propiedad = “prop1”			                                   |	agrega la propiedad al objeto también Objeto[propiedad]
+delete Objeto.propiedad			                                       |	elimina la propiedad del objeto
+Object.hasOwnProperty(propiedad)		                               |	retorna True/false si existe la propiedad
+Dog.prototype.numLegs = 4;	                                       |	añade la propiedad y el valor al obj (como si fuera static en java)
+```js  
+Bird.prototype = {                 
+Constructor : Bird,					//fija el tipo de constructor pq cuando se definen prototipos                 
+  numLegs: 2; 	                    //el mismo se pierde		
+  eat: function() {					//Añade propiedades al prototipo en una sola vez, como un
+    console.log("nom nom nom");		//objeto	
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+```    
+|  | |
+|:----|:-----|
+Bird.prototype.isPrototypeOf(duck);	                    |	es un instanceof para obj con prototype. Da falso si el prototipo original es cambiado
+Object.create(Animal.prototype)		                      |	crea un obj y le asigna el protot		
+Bird.prototype = Object.create(Animal.prototype);       |	asigna el prototipo de la superclase al subtipo
+```js
+let flyMixin = function(obj) {				//Mixins: crea una funcion que agrega funcionalidad al 
+  obj.fly = function() {					//objeto que se le pase por parametro flyMixin(obj)
+    console.log("Flying, wooosh!");
+  }
+};
+```
+|  | |
+|:----|:-----|
+Override de metodos 			                              |		si se declaran metodos con el mismo nombre en una subclase Se hace un override automatico (la prioridad es jerarquia inversa)
+```js
+Function Bird(){
+	Let legs = 2;					//se declaran propriedas PRIVADAS con LET y se acceden solo  
+	This.getLegs = function (){    //Con a traves de los metodos (si existen).
+		Return legs;
+    }
+}
+```
+```js
+(function () {						//Funcion autoinvocada. No tiene nombre se encierra entre 
+  console.log("Chirp, chirp!");	    //	“()” y termina como una funcion con “()”
+})();
+```
+```js
+let funModule = ( function(){				//modulo autoejecutante para exportar. Retorna un objeto 
+  return{						            //con las propiedades/funciones isCuteMixin y singMixin 
+    isCuteMixin : function(obj) {
+      obj.isCute = function() {
+        return true;
+      };
+    },
+     singMixin : function(obj) {
+      obj.sing = function() {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  }
+}
+)();
+```
+|  | |
+|:----|:-----|
+Array[posicion].propiedadObj[posicionListaInterna]              |	acceder a datos dentro de un array con objetos dentro
+Obj.propiedad[PosiciónListaIntera]			                        |acceder a datos de un array dentro de un objeto
+Object.freeze(obj)				                                      |	congela el objeto pasado para que NO SEA MUTABLE
+Object.keys(obj);				                                        |	devuelve un arr con strings de todas las keys del objeto 
+for(let item in usersObj) {  }			                            |	“for in” itera SOLO LA KEY del usersObj. <br>	console.log(item) imprimiria solo la KEY (no el value)
+
+## Math
+|  | |
+|:----|:-----|
+Math.random()				                                                      |	Genera un numero random entre 0 y 0.9999999
+Math.floor(x)						                                                  |	trunca resultado de “X” ej: 12.99 es 12 
+Math.floor(Math.random() * (max - min +1) + min)		genera random entre min y max (inclusive)+1
+Math.max(...arr)					                                                |	encuentra el máximo dentro de un arreglo
+Const myFunc = (param1, param2) => param1 + param2;                       | 	DECLARACION DE FUNCIONES ANONIMAS
+const greeting = (name = "Anonymous") => "Hello " + name;	|PARAMETROS POR DEFECTO EN LA DECLARACION
+const { name: userName, age: userAge } = user;		                        |  destructuring con asignación de nuevo identificador
+const { today: { low: lowToday , high: highToday  }} = LOCAL_FORECAST;    |   DESTRUCTURING NESTEADO
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];			                          |	would display the values 1, 2 and [3, 4, 5, 7].
+const [,,...shorterList) = array;|	devuelve un array tomando todos los valores menos los primeros 2
+Number.isInteger(25)				                                              |		chequea si es int
+Number(“numero string”)                                                   |	si hay caracteres devuelve NaN, sino devuelve el numero sea int o float parseado como numer
+Math.abs()                                                                |	devuelve valor absoluto  del parametro ej -7 y 7 devuelven “7”	
+// Using Arithmetic Progression summing formula <br>  const sum = ((startNum + endNum) * numCount) / 2;                                                            |	numCount es dif +1
+isNaN("asd")                                                              | chequea si el parametro es NaN (not a number)
+<br>
+## DESTRUCTURING en el mismo pase de parametros
+| | |
+|:---|:---|
+const half = (stats) => (stats.max + stats.min) / 2.0;    	              |	aca se pasa “stats” y se desestructura dentro
+const half = ({max , min}) => (max + min) / 2.0; 	                        |	llega “stats” a la fn pero ya se desestructura
+<br>    
+## DESTRUCTURING de arrays
+| | |
+|:---|:---|
+let [first, second, third] = ["Laide", "Gabriel", "Jets"];	              |
+let thing = ["Table", "Chair", "Fan"];		                                |	si se pasan mas variables a cargar, que elementos en el 
+let [a, b, c] = thing;				                                            |	arreglo, los proximos valores seran “undefined”
+let [a, b, c] = runners();				                                        |	desestructurar el retorno de un array, es lo mismo.
+let planets = ["Mercury", "Earth", "Venus", "Mars", "Pluto", "Saturn"];
+let [first, , third, ...others] = planets;	                              |	retorna firts y third individuales y un arreglo con el resto en others
+let a, b;					                                                        |		intercambiando variables dentro de un arreglo
+[a, b] = ["Male", "Female"];		                                          |		console.log(a); //Output: Female
+[a, b] = [b, a];			                                                    |			console.log(b); //Output: Male
+let numbers = [8, [1, 2, 3], 10, 12]; <br> let  [a, [d, e, f]] = numbers; | desestructurar arrays nesteados
+
+
+### Declarar funciones dentro de objetos:
+```js
+const person = {
+ 	 name: "Taylor",
+  	sayHello() {
+  	  return `Hello! My name is ${this.name}.`;
+  }
+};
+```
+
+### CLASES    (ATRIBUTOS SE ESCRIBEN CON “_”)
+```js
+Class Book{
+      constructor(author) {
+   	 this._author = author;
+  }
+      get writer() {
+               return this._author;
+  }
+      set writer(updatedAuthor) {
+            this._author = updatedAuthor;
+  }
+}
+```
+
+## Crear un modulo:
+```html
+<script type="module" src="filename.js"></script>  
+```
+
+## EXPORTAR e IMPORTAR
+| | |
+|:---|:---|
+export { add, subtract};				                                    |		exporta las funciones add y subtract declaradas como variables
+import { add, subtract } from './math_functions.js';	              |	importa desde math_functions
+import * as myMathModule from "./math_functions.js";	              |   importa “todo”  como “myMathModule”								se accede myMathModule.funcion
+
+### Exportar defaults 
+```js
+export default function add(x, y) {		//se declara y se exporta  como “add”
+  return x + y;							//import add from "./math_functions.js";
+}
+export default function(x, y) {			//se declara y se exporta “anonimamente”
+  return x + y;
+}
+```
+
+## Promesas:
+```js
+const myPromise = new Promise((resolve, reject) => {
+  if(condition here) {
+    resolve("Promise was fulfilled");
+  } else {
+    reject("Promise was rejected");
+  }
+});
+```
+
+## THEN y CATCH:
+```js
+myPromise.then(result => {
+  console.log(result)
+});
+myPromise.catch(error => {
+  console.log(error)
+});
+```
+
+## REGEX   siempre entre /regex here/
+| | |
+|:---|:---|
+'string'.match(/regex/);                                         |	retorna match dentro del string    let result = extractStr.match(codingRegex);
+/regex/.test('string');		                                       |	true or false si matchea el regex con el string pasado
+\| operador or			                                             |	/dog\|cat\|bird\|fish/
+/freeCodeCamp/i		                                               |bandera “i” para case insensitive
+/freeCodeCamp/g	                                                 | bandera “g” global. Lo encuentra todas las veces que matchea (devuelve todas las ocasiones en el match)
+Wildcard “ .”  /..un…/	                                         |	este regex verifica “un” con 2 caracteres cualquiera adelante y 3 detrás
+[aeiou]			                                                     |		busca CARÁCTER que matchee con alguna de esas letras <br> ej: /b[ai]t/ matchea solo bat o bit
+[a-d]			                                                       |		busca entre los caracteres a y b ej: /c[a-c]r/  matchea car, cbr, ccr
+[^aeiou]		                                                     |		NIEGA la búsqueda de esos caracteres
+...etc
+
+<br><br>
+## FUNCIONAL
+---
+1.	Isolated functions - there is no dependence on the state of the program, which includes global variables that are subject to change
+2.	Pure functions - the same input always gives the same output
+3.	Functions with limited side effects - any changes, or mutations, to the state of the program outside the function are carefully controlled
+
+
+| | |
+|:---|:---|
+const names = users.map(user => user.name);		                                            |	devuelve un arreglo nuevo con todos los names. Itera sobre el arreglo con “user” y retorna lo que se le pida	en la funcion	
+const ratings = watchList.map(({"Title":title,"imdbRating":rating}) => ({title,rating}) ); |	igual que lo anterior pero devuelve parejas de datos 
+map callback (element, index, originalArray)                                                |Los parametros del callback de MAP
+const usersUnder30 = users.filter(user => user.age < 30);                                   |	retorna array con el filtro proporcionado
+map(item).filter(funcionalidad)			                                                        |	se pueden encadenar el mapeo y filtrado posterior.
+El callback de MAP y FILTER recibe: 				                                                |Callback(currentValue, index, array)	<br>	Callback(array[i], i, array)
+array.reduce(function(total, currentValue, currentIndex, arr), initialValue)                | initialValue refiere al value de ”total”
+
+```js
+Ej: 
+let ageGroup = [18, 21, 1, 1, 51, 18, 21, 5, 18, 7, 10];
+let uniqueAgeGroup = ageGroup.reduce( (accumulator, currentValue) => {
+  if (accumulator.indexOf(currentValue) === -1) {	// si no esta en el accumulator, lo pushea
+    accumulator.push(currentValue);
+  }
+  return accumulator;
+}, []);	                                        	// el inicio del acumulador va a ser un array vacio 						
+```
+| | |
+|:---|:---|
+Boolean("parametro")                                                           | chequea si es TRUTHY or FALSY y retorna true or false acorde
+arr.every( item => item > 0)	                                                |	devuelve true/false si TODOS los elementos del array cumplen con la condicion 
+return arr.some(item => item > 0)	                                            |	devuelve true/false si ALGUNO los elementos del array cumplen con la condicion
+array1.forEach(element => console.log(element));
+```js
+arr.sort( (a, b) {					                //	ordena de menor a mayor. Si  son iguales devuelve “0”, si A es 
+    return a === b ? 0  : a < b ? 1 : -1;		//	menor aB devuelve “1” y si A es menor a B devuelve “-1”.
+  })	                                    //	utiliza esos numeros para calcular las posiciones de todos los elementos
+```
+Si se comprueba  existencia sobre una propiedad que no esta en un objeto, se devuelve undefined: <br>
+`Let obj = {keys: “valor”}`
+```js
+if(obj[“algo”] != 4){                       //   esta comprobando si “undefined != 4”
+         console.log(“este if siempre va a ser true si no existe algo”;
+}
+```
+
+
+
+
+
+<style>
+    body{
+        font-size:16px;
+        line-height: 2;
+        color: white;
+    }
+    table{
+        width: 100%
+    }
+    table th{
+        width: 50%;
+        font-size:18px
+    }
+    td:nth-child(1) {
+        font-weight: 700;
+    }
+    h1,h2,h3{
+        color: orange;
+        font-weight: 500;
+    }
+</style>

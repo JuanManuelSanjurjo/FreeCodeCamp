@@ -1,0 +1,62 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+
+body,html{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(34, 34, 34);
+    color: antiquewhite;
+    text-align: center;
+    position: relative;
+
+}
+h1,h2{
+    padding-top: 20px;
+    text-shadow: 1px 1px 5px  black;
+}
+.container{
+    margin: auto;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.canvas{
+   width: 1300px;
+   height: 700px;
+   border-radius: 15px;
+}
+rect{
+    stroke: rgba(250, 235, 215, 0.541);
+}
+text{
+    font-size: 12px ;
+    font-weight: 600;
+    fill: rgb(29, 27, 27);
+}
+
+#tooltip{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    background-color: blueviolet;
+    opacity: 0.9;
+    z-index: 2;
+
+}
+#legend{
+    background-color: blueviolet;
+    opacity: 0.9;
+    height: 400px;
+    width: 20%;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.canvas, #legend{
+    box-shadow: 1px 1px 13px 5px rgba(0, 0, 0, 0.603);
+    border: 3px solid antiquewhite;
+
+}

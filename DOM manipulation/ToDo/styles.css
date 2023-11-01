@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(https://3fc4ed44-3fbc-419a-97a1-a29742511391.selcdn.net/coub_storage/coub/simple/cw_timeline_pic/080f66029d0/48ee790ca84d58901346e/1469467758_image.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 35px;
+    align-items: center;
+    font-family: "Roboto";
+    overflow:hidden;
+}
+
+h1{
+    position: absolute;
+    inset: 35% 35% 0 35%  ;
+    font-size: 60px;
+}
+
+
+.container{
+    right: 10%;
+}
+
+#add-task-container{
+    width: 350px;
+    padding: 20px 10px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 3px;
+
+    display: flex;
+    margin-bottom: 20px;
+}
+
+
+input{
+    flex: 5;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+#add-task{
+    flex: 1;
+    transition: 0.3s;
+
+    font-size: 1.2rem;
+    padding: 5px;
+
+    background-color: white;
+    color: green;
+    border: 2px solid green;
+    border-radius: 10px;
+}
+#add-task:hover{
+    color: white;
+    background-color: green;
+}
+
+.task{
+    width: 100%;  
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task li{
+    list-style: none;
+    flex: 4;
+    padding: 5px;
+    font-size: 1.3rem;
+    margin: 10px;
+}
+.task button{
+    flex: 1;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+.task .checkTask{
+    color: orange;
+    margin-right: 5px;
+    border: 2px solid orange;
+    font-size: 1.5rem;
+}
+
+.task .checkTask:hover{
+    background-color: orange;
+    color: white;
+}
+.task .deleteTask{
+    color: red;
+    border: 2px solid red;
+    font-size: 1.3rem;
+}
+
+.task .deleteTask:hover{
+    background-color: red;
+    color: white;
+}
+
+#task-container{
+    width: 100%;
+    height: 60vh;
+    overflow-y: scroll;
+    padding: 20px 10px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#task-container::-webkit-scrollbar {
+    display: none;
+}

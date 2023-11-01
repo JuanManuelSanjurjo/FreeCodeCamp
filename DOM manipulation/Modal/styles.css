@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto";
+}
+
+
+body{
+    background-image: url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+
+}
+
+#open-btn{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    width: 350px;
+    height: 80px;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: solid 2px #fff;
+    background-color: transparent;
+    color: #fff;
+    padding: 5px;
+    box-shadow:  0 0 3px black;
+    transition: 0.5s;
+}
+
+#open-btn:hover{
+    background-color: #fff;
+    color: black;
+}
+.modal-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100;
+    z-index: 1;
+
+
+
+}
+
+.modal{
+    background-color: #fff;
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 200px;
+    height: 100px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation:animateModal 0.4s;
+}
+
+#close-btn{
+    font-size: 3rem;
+}
+#close-btn:hover{
+   color:red;
+   font-size: 3.5rem;
+}
+
+
+
+
+@keyframes animateModal {
+    from{
+        top: -300px;
+    }
+    to{
+        top: 50%;
+    }
+}

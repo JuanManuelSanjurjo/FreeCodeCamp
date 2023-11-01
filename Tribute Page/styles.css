@@ -1,0 +1,99 @@
+body{
+    background-color: #191A19;
+    color: blanchedalmond;
+    background-image: url(https://images4.alphacoders.com/111/1115158.jpg);
+    background-size: 100% ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: auto;
+}
+h1{
+    text-align: center;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    background-color:#1E5128 ;
+}
+nav a{
+    text-decoration: none;
+    padding: 22px 16px;
+}
+nav a:hover{
+    background-color: #a6b383;
+}
+a:visited{
+    color: unset;
+}
+
+.nav-title{
+    width:40%;
+    color: #D8E9A8;
+    font-size: 20px;
+    font-weight: 800;
+    padding-left: 10px;
+}
+nav{
+    font-weight: 700;
+    display: flex;
+    margin: 0;
+    width:60%;
+    justify-content: center;
+    align-items: center;
+}
+ul {
+    height: 100%;;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+li{
+    list-style:none;
+}
+
+front-img{
+   display: flex;
+    justify-content: center;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    width: 60%;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 5px  #4E9F3D;
+}
+img:hover{
+    transform: scale(1.05);
+    /*filter: hue-rotate(90deg);*/
+   /* filter: grayscale(50%);*/
+   /*filter: drop-shadow(16px 16px 20px blue);*/
+   /*filter: blur(5px);*/
+   /*filter: brightness(0.4);*/
+   /*filter: invert(75%);*/
+   /*filter: opacity(25%);*/
+   filter: saturate(120%);
+   /*filter: sepia(60%);*/
+
+
+}
+
+figcaption{
+    margin:20px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#tribute-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #D8E9A8;
+}

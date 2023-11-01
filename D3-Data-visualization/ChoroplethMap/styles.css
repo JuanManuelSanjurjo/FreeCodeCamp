@@ -1,0 +1,58 @@
+*,::after,::before{
+    box-sizing: border-box;
+}
+
+html,body{
+    margin: 0;
+    /* width: 100%;
+    height: 100%; */
+    background-color: rgb(73, 23, 23);
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.596);
+    font-size: 20px;
+    
+}
+
+h1,h2{
+    text-align: center;
+    color: antiquewhite;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-decoration-skip-ink: none;
+}
+
+.canvas{
+    padding: 50px;
+    width: 60vw;
+    height: 80vh;
+    background-color:rgb(16, 41, 23);
+    border-radius: 10px ;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.466);
+}
+.county{
+    stroke: rgba(0, 0, 0, 0.082);
+}
+.county:hover{
+    fill: rgba(0, 0, 0, 0.664) !important; 
+}
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#legend{
+    padding: 100px;
+    width: 30vw;
+    height: 80vh;
+    background-color: rgb(16, 41, 23);
+    border-radius: 10px ;
+    margin: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.466);
+}
+#tooltip{
+    position: absolute;
+    display: none;
+    padding: 10px;
+    width: auto;
+    background-color: antiquewhite;
+}

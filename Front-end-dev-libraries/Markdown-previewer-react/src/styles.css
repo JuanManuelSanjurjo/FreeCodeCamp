@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+}
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #5b1991;
+}
+body{
+    margin: 0;
+}
+.titles{
+    margin: 15px auto;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+pre,blockquote{
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.568);
+    font-weight: 600;
+}
+
+pre{
+    background-color:rgba(0, 255, 128, 0.795);
+    font-size: 1.2rem;
+}
+
+blockquote{
+    background-color:darkmagenta;
+    border-left: 7px solid wheat;
+}
+code{
+    color:#8b35d1;
+}
+.container{
+    display: flex;
+    width: 98%;
+    height: 98vh;
+    margin: auto;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+
+.editor, .preview{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.textarea{
+    color:burlywood;
+    font-size: 1.2rem;
+    padding: 20px;
+    resize: none;
+    height: 95%;
+    background-color: rgba(42, 10, 68, 0.959);
+    border-radius: 5px;
+    transition: outline 0.3s;
+    border: none;
+    outline: 2px solid transparent;
+    overflow-y: auto;
+    box-shadow: 5px 5px 20px 3px black;
+}
+
+.textarea:hover {
+   outline: 2px solid rgb(177, 5, 62);
+}
+.textarea:focus {
+    outline: 2px solid rgb(241, 3, 83) ;
+ }
+
+/*SCROLLBAR*/
+.textarea::-webkit-scrollbar {
+    width: 0.5rem;
+}
+.textarea::-webkit-scrollbar-track {
+    background-color: rgba(66, 10, 68, 0.959);;
+}
+.textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(116, 19, 119, 0.959);;;
+}
